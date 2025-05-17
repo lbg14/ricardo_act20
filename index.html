@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Los Colores</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <style>
+    /* Responsividad para iframes y multimedia */
+    .responsive-iframe {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    .responsive-iframe iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    h1, h2, h3, p {
+      margin: 10px 0;
+    }
+    section {
+      padding: 20px;
+    }
+  </style>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    Página Web Informativa EL COLOR 🎨
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('index')">Inicio</a>
+    <a href="#" onclick="showSection('teoria')">Teoría del Color</a>
+    <a href="#" onclick="showSection('psicologia')">Psicología del Color</a>
+    <a href="#" onclick="showSection('modelos')">RGB, CMYK y HEX</a>
+  </nav>
+
+  <section id="index" class="active">
+    <p><strong>Lizbeth Botello Guzmán</strong></p>
+    <p>Colegio de Estudios Científicos y Tecnológicos</p>
+    <h1>Explora la teoría del color, su psicología y los modelos de color más utilizados.</h1>
+    <h2>¿Qué son los colores?</h2>
+    <p>Los colores son la percepción visual que tenemos de las distintas longitudes de onda de la luz reflejada por los objetos.</p>
+    <p>Se generan cuando la luz blanca incide sobre un objeto y este refleja ciertas longitudes de onda, que nuestros ojos perciben como colores.</p>
+    <img src="imagenes/colores.jpg" alt="Imagen de colores">
+  </section>
+
+  <section id="teoria">
+    <h1>Teoría del Color</h1>
+    <p>La teoría del color es un conjunto de reglas que nos ayudan a crear combinaciones armónicas.</p>
+    <p>Se utiliza en arte, diseño, moda, fotografía y más, para entender cómo se relacionan los colores.</p>
+
+    <h3>El Círculo Cromático</h3>
+    <p>Es una forma gráfica que muestra la relación entre los colores:</p>
+
+    <p>🔴 Colores primarios (RGB o CMY)</p>
+    <div class="responsive-iframe">
+      <iframe src="https://www.youtube.com/embed/Ws2zVXQCcJo?si=wUuEVUK_yxX-BBsv" allowfullscreen></iframe>
+    </div>
+
+    <p>🟠 Colores secundarios (mezcla de primarios)</p>
+    <div class="responsive-iframe">
+      <iframe src="https://www.youtube.com/embed/HV33Wrfh7f8?si=W5NRrWsuRo1VeBks" allowfullscreen></iframe>
+    </div>
+
+    <p>🟡 Colores terciarios (mezcla de primario + secundario)</p>
+    <div class="responsive-iframe">
+      <iframe src="https://www.youtube.com/embed/t759LMCneOg?si=UB85bg93WpW6VT4F" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="psicologia">
+    <h1>Psicología del Color</h1>
+    <p>Los colores pueden afectar nuestras emociones, decisiones y comportamiento.</p>
+    <p>Haz clic en un color para conocer su significado:</p>
+
+    <div class="color-container" id="colorContainer"></div>
+    <div id="info">Selecciona un color</div>
+
+    <script>
+      const colores = [
+        { color: "#FF0000", nombre: "Rojo", significado: "Energía, pasión, amor, urgencia, peligro." },
+        { color: "#0000FF", nombre: "Azul", significado: "Confianza, calma, seguridad." },
+        { color: "#008000", nombre: "Verde", significado: "Salud, naturaleza, crecimiento." },
+        { color: "#FFFF00", nombre: "Amarillo", significado: "Felicidad, optimismo, juventud, alerta." },
+        { color: "#FFA500", nombre: "Naranja", significado: "Entusiasmo, creatividad, diversión." },
+        { color: "#800080", nombre: "Morado", significado: "Lujo, espiritualidad, misterio." },
+        { color: "#000000", nombre: "Negro", significado: "Elegancia, poder, sofisticación." },
+        { color: "#FFFFFF", nombre: "Blanco", significado: "Pureza, inocencia, simplicidad." }
+      ];
+
+      const colorContainer = document.getElementById("colorContainer");
+      const info = document.getElementById("info");
+
+      colores.forEach(colorObj => {
+        const div = document.createElement("div");
+        div.classList.add("color-box");
+        div.style.backgroundColor = colorObj.color;
+        div.addEventListener("click", () => {
+          info.innerHTML = `<strong>${colorObj.nombre}:</strong> ${colorObj.significado}`;
+          info.style.borderLeft = `10px solid ${colorObj.color}`;
+        });
+        colorContainer.appendChild(div);
+      });
+    </script>
+
+    <h3 style="color: blue;">La psicología del color estudia cómo los colores influyen en nuestras emociones y decisiones.</h3>
+    <div class="responsive-iframe">
+      <iframe src="https://www.youtube.com/embed/3RRuIxZX8ZU?si=b3tmjLx_U17BaL04" allowfullscreen></iframe>
+    </div>
+    <img src="imagenes/emo.jpg" alt="emociones y colores">
+  </section>
+
+  <section id="modelos">
+    <h1>RGB, CMYK y HEX</h1>
+    <p>Estos son modelos de color usados en pantallas, impresión y diseño web.</p>
+
+    <h2>RGB</h2>
+    <h3 style="color: blueviolet;">Rojo, Verde y Azul</h3>
+    <p>Usado en pantallas digitales, combina luz para formar colores.</p>
+    <img src="imagenes/rgb.png" alt="modelo RGB">
+
+    <h2>CMYK</h2>
+    <h3 style="color: blueviolet;">Cian, Magenta, Amarillo y Negro</h3>
+    <p>Modelo usado en impresión, mezcla tintas para formar colores.</p>
+    <img src="imagenes/aa.png" alt="modelo CMYK">
+
+    <h2>HEX</h2>
+    <h3 style="color: blueviolet;">Códigos Hexadecimales</h3>
+    <p>Se usan en diseño web para representar colores en código, por ejemplo: <code>#FF5733</code>.</p>
+    <img src="imagenes/hex.png" alt="modelo HEX">
+  </section>
+
+  <footer>
+    © 2025 - Proyecto sobre el Color | Lizbeth Botello Guzmán
+  </footer>
+
+</body>
+</html>
